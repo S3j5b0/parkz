@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parkz", "Parkz\Parkz.csproj", "{42703F50-07FC-4900-B7E9-CF1DA7BDA2F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parkz.Test", "Parkz.Test\Parkz.Test.csproj", "{C07D2DF7-68DD-4BC7-8D38-2E0D4873A45C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42703F50-07FC-4900-B7E9-CF1DA7BDA2F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42703F50-07FC-4900-B7E9-CF1DA7BDA2F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42703F50-07FC-4900-B7E9-CF1DA7BDA2F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42703F50-07FC-4900-B7E9-CF1DA7BDA2F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C07D2DF7-68DD-4BC7-8D38-2E0D4873A45C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07D2DF7-68DD-4BC7-8D38-2E0D4873A45C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07D2DF7-68DD-4BC7-8D38-2E0D4873A45C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07D2DF7-68DD-4BC7-8D38-2E0D4873A45C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

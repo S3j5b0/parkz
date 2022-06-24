@@ -1,0 +1,378 @@
+﻿<link rel="stylesheet" href="~/css/searchstyle.css" asp-append-version="true"/>
+
+@using Parkz.Models
+@using Castle.Core.Internal
+@model List<CustomerModel>
+
+<div class="container mt-5">
+
+    <div class="row d-flex justify-content-center">
+       
+        <div class="col-md-10">
+
+            <div class="card p-3  py-4">
+                <form asp-controller="Home" asp-action="Query" method="post">
+                    <h5>Find customer by constraint</h5>
+
+                    <div class="row g-3 mt-2">
+ 
+                        <div class="row">
+
+
+                            <div class="col-md-4">
+
+                                <input name="Name" type="text" placeholder="First name" value="@ViewBag.Name"class="form-control">
+            
+                            </div>
+
+
+                            <div class="col-md-4">
+
+                                <input name="Surname" type="text" placeholder="Surname"   class="form-control">
+            
+                            </div>
+                            <div class="col-md-4">
+                                     
+                                <input name="Age" type="number" class="form-control" placeholder="Age" > 
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <label for="start">From</label>        
+                                <input type="date" id="start" name="From" class="form-control"
+                                       value="2022-06-17"
+                                       min="2019-01-01" max="2022-06-17">
+                                <br/>
+                                <label for="stop">To   </label>   
+
+                                <input type="date" id="stop" name="To" class="form-control"
+                                       value="2022-06-17"
+                                       min="2019-01-01" max="2022-06-17">
+                                </div>
+                        </div>
+                        <div class="row g-3 mt-2">
+                            <h6> Customer adress constraints</h6>
+                            <div class="col-md-4">
+
+                                <input name="Country" type="text" class="form-control" placeholder="Country">
+            
+                            </div>
+                            <div class="col-md-4">
+                                                                                                                                                                
+                                <input name="Town" type="text" class="form-control" placeholder="Town">
+                                                                                                                                                                            
+                                </div>
+                            <div class="col-md-4">
+                                <input name="ZipCode" type="text" class="form-control" placeholder="ZipCode">
+                            </div>
+                            <div class="col-md-4">
+                                <input name="Street" type="text" class="form-control" placeholder="Street">
+                                </div>
+                            <div class="col-md-4">
+                                <input name="HouseNr" type="text" class="form-control" placeholder="HouseNr">
+                                </div>
+                        </div>
+
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm-3">
+                                <select name="sortBy" id="cars" class="form-control" aria-label="Default select example">
+                                    <option value="" disabled selected>Sort by</option>
+                                    <option value="CreationDate_desc">Customer creation date - descending</option>
+                                    <option value="Age_desc">Customer Age - descending</option>
+                                    <option value="CreationDate_asc">Customer creation data - ascending</option>
+                                    <option value="Age_asc">Customer Age - ascending</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                              <button class="btn btn-primary btn-block" type="submit">Search Results</button>
+                            </div>
+                          </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-3">
+                        
+                        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="advanced">
+                            Add constraints by cars purchased <i class="fa fa-angle-down"></i>
+                        </a>
+ 
+
+                        <div class="collapse" id="collapseExample">
+                            <div class="row g-3 mt-2">
+ 
+
+
+                                <div class="row">
+
+                                    <div class="col-md-4">
+
+                                        <input name="Model" type="text" placeholder="Car Model" class="form-control">
+            
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <input name="Make" type="text" placeholder="Car Make" class="form-control">
+            
+                                    </div>
+
+                                    <div class="col-md-4">
+                            
+                                        <select name="color" id="cars" class="form-control" placeholder="Color">
+                                            <option value="" disabled selected>Select Car Color</option>
+                                            <option value="Red">Red</option>
+                                            <option value="Green">Green</option>
+                                            <option value="Blue">Blue</option>
+                                            <option value="Black">Black</option>
+                                            <option value="Silver">Silver</option>
+                                        </select>
+                                        
+                                    </div>
+                                    <div class="col-md-4">
+                            
+                                        <input name="recPrice" type="number" class="form-control" placeholder="Recommended price"> 
+                                    </div>
+                                    <div class="col-md-4">
+                                                        
+                                        <input name="PaidPrice" type="number" class="form-control" placeholder="Paid price"> 
+                                    </div>
+
+                                </div>
+                            </div>
+                            <h6> Pick recommended price interval</h6>
+                            <div class="row">
+                                <div class="col-md-4">
+                                                        
+                                    <input name="recPriceLow" type="number" class="form-control" placeholder="From price"> 
+                                </div>
+                                <div class="col-md-4">
+                                                                                            
+                                    <input name="recPriceTop" type="number" class="form-control" placeholder="To price"> 
+                                </div>                    
+
+                            </div>
+                            <h6> Pick Price paid interval</h6>
+                            <div class="row">
+                                <div class="col-md-4">
+                                                                                                            
+                                    <input name="PaidPriceLow" type="number" class="form-control" placeholder="From price"> 
+                                </div>
+                                <div class="col-md-4">
+                                                                                                                                                
+                                    <input name="PaidPriceTop" type="number" class="form-control" placeholder="To price"> 
+                                </div>                    
+                                                    
+                            </div>
+                            <h6> Pick purchase date interval</h6>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="start">From</label>        
+                                    <input type="date" id="start" name="purchaseDateFrom" class="form-control"
+                                           value="2022-06-17"
+                                           min="2019-01-01" max="2022-06-17">
+                                    <br/>
+                                    <label for="stop">To   </label>   
+ 
+                                    <input type="date" id="stop" name="purchaseDateTo" class="form-control"
+                                           value="2022-06-17"
+                                           min="2019-01-01" max="2022-06-17">
+                                </div>              
+                                                                                
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="mt-3">
+                                            
+                                            <a data-toggle="collapse" href="#collapseSalesMan" role="button" aria-expanded="false" aria-controls="collapseExample" class="advanced">
+                                                Add constraints by Salesperson <i class="fa fa-angle-down"></i>
+                                            </a>
+                     
+                    
+                                            <div class="collapse" id="collapseSalesMan">
+                                                <div class="row g-3 mt-2">
+                     
+                    
+                    
+                                                    <div class="row">
+                    
+                                                        <div class="col-md-4">
+                    
+                                                            <input name="salespersonName" value="@ViewBag.salespersonName" type="text" placeholder="Salesperson name" class="form-control">
+                                
+                                                        </div>
+                                                        <div class="col-md-4">
+                                            
+                                                            <select name="salespersonJobTitle" id="cars" class="form-control" placeholder="Color">
+                                                                <option value="" disabled selected> Salesperson title</option>
+                                                                <option value="Consultant">Consultant</option>
+                                                                <option value="Analyst">Analyst</option>
+                                                                <option value="Manager">Manager</option>
+
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <input name="salesPersonSalary" type="number" class="form-control" placeholder="Salary"> 
+                                                        </div>
+                                                    </div>
+                                                    <h6> Pick salary interval</h6>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                                                                            
+                                                            <input name="salesPersonSalaryFrom" type="number" class="form-control" placeholder="From price"> 
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <input name="salesPersonSalaryTo" type="number" class="form-control" placeholder="To price"> 
+                                                        </div>                    
+                                                    
+                                                    </div>
+                                                    <h6> Salesperson adress constraints</h6>
+                                                                            <div class="row g-3 mt-2">
+                                                    
+                                                                                <div class="col-md-4">
+                                                    
+                                                                                    <input name="SalesPersonCountry" type="text" class="form-control" placeholder="Country">
+                                                                
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                                                                    
+                                                                                    <input name="SalesPersonTown" type="text" class="form-control" placeholder="Town">
+                                                                                                                                                
+                                                                                    </div>
+                                                                                <div class="col-md-4">
+                                                                                    <input name="SalesPersonZipCode" type="text" class="form-control" placeholder="ZipCode">
+                                                                                </div>
+                                                                                <div class="col-md-4">
+                                                                                    <input name="SalesPersonStreet" type="text" class="form-control" placeholder="Street">
+                                                                                    </div>
+                                                                                <div class="col-md-4">
+                                                                                    <input name="salesPersonHouseNr" type="text" class="form-control" placeholder="HouseNr">
+                                                                                    </div>
+                                                                            </div>
+                                                </div>
+     
+
+                                            </div>
+                    
+                                            
+                                        </div>
+                </form>
+            </div>
+ 
+ 
+ 
+        </div>
+        
+
+    </div>
+    
+
+</div>
+
+@if (@Model != null)
+{
+
+
+
+    <div class=".justify-content-sm-center p-4" >
+        <p class="text-center"> @Model.Count matching customers for constraints </p>
+    </div>
+
+@foreach (CustomerModel c in @Model)
+{
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="card p-3 col-md-5 py-4 bg-success">
+                <h5>@c.Name , @c.Surname</h5>
+
+               <div class="container">
+                 <div class="row">
+                   <div class="col-sm">
+                     Age : @c.Age
+                     <br/>
+                     @c.Adress.Country,
+                     @c.Adress.Town,
+                     <br/>
+                     @c.Adress.street @c.Adress.HouseNumber
+                     <br/>
+                     @c.Adress.ZipCode
+                     
+                   </div>
+                   <div class="col-sm">
+                   </div>
+                     <div class="col-sm">
+                         Created: @c.Created.Date.ToString("MM/dd/yyyy")
+                     </div>
+                 </div>
+                 
+                    <div class="mt-3">
+                        
+                        <a data-toggle="collapse" href="#collapsedata_@c.Id" role="button" aria-expanded="false" aria-controls="collapseExample" class="advanced">
+                            View purchases <i class="fa fa-angle-down"></i>
+                        </a>
+ 
+
+                        <div class="collapse" id="collapsedata_@c.Id">
+                            @foreach (PurchaseModel p in c.purchases)
+                            {
+                                <div class="card card-body">
+
+                                    <p> <b>Order date: @p.OrderDate.Date.ToString("MM/dd/yyyy") </b> </p>
+                                    <p> Price paid : @p.PricePaid dkk</p>
+                                    <p> Car details: </p>
+                                    <div class="grid-container">
+                                        <div class="grid-item"><b> Make</b> </div>
+                                        <div class="grid-item"> @p.Car.Make</div>
+                                        <div class="grid-item"><b>Model</b> </div>
+                                        <div class="grid-item">@p.Car.Model</div>
+                                        <div class="grid-item"><b> Color </b></div>
+                                        <div class="grid-item">@p.Car.CarColor</div>
+                                        <div class="grid-item"><b>Recommended price </b> </div>
+                                        <div class="grid-item">@p.Car.RecommendedPrice dkk </div>
+                                        <div class="grid-item"><b>Extras</b> </div>
+                                        <div class="grid-item">@String.Join(",",@p.Car.Extras) </div>
+                                    </div>
+                                    
+                                    <a data-toggle="collapse" href="#collapsedata_@p.Id" role="button" aria-expanded="false" aria-controls="collapseExample" class="advanced">
+                                        View salesperson Info <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <div class="collapse" id="collapsedata_@p.Id">
+                                        <div class="grid-container">
+                                            <div class="grid-item"><b> Name</b> </div>
+                                            <div class="grid-item"> @p.SalesPerson.Name</div>
+                                            <div class="grid-item"><b> Title</b> </div>
+                                            <div class="grid-item"> @p.SalesPerson.JobTitle</div>
+                                            <div class="grid-item"><b> Salary</b> </div>
+                                            <div class="grid-item"> @p.SalesPerson.Salary</div>
+                                            <div class="grid-item"><b> Country</b> </div>
+                                            <div class="grid-item"> @p.SalesPerson.Adress.Country</div>
+                                            <div class="grid-item"><b> City</b> </div>
+                                            <div class="grid-item"> @p.SalesPerson.Adress.Town</div>
+                                            <div class="grid-item"><b> Adress</b> </div>
+                                            <div class="grid-item"> @p.SalesPerson.Adress.street @p.SalesPerson.Adress.HouseNumber @p.SalesPerson.Adress.ZipCode </div>
+
+                                        </div>
+
+                                    </div>
+                                    </div>
+
+                            }
+                        </div>
+                    </div>
+                   
+               </div>
+
+
+            </div>
+        </div>
+    </div>
+
+}
+
+
+}
