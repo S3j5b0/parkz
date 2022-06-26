@@ -4,15 +4,15 @@
 
 namespace Parkz.Migrations
 {
-    public partial class Mig2 : Migration
+    public partial class Mig9 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<int>(
-                name: "HouseNumber",
-                table: "Adresses",
-                type: "INTEGER",
-                nullable: false,
+            migrationBuilder.AlterColumn<string>(
+                name: "Extras",
+                table: "Cars",
+                type: "TEXT",
+                nullable: true,
                 oldClrType: typeof(string),
                 oldType: "TEXT");
         }
@@ -20,12 +20,14 @@ namespace Parkz.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "HouseNumber",
-                table: "Adresses",
+                name: "Extras",
+                table: "Cars",
                 type: "TEXT",
                 nullable: false,
-                oldClrType: typeof(int),
-                oldType: "INTEGER");
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "TEXT",
+                oldNullable: true);
         }
     }
 }

@@ -1,11 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using Parkz.Models;
 
-namespace ParkingApp.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Proxies;
+namespace Parkz;
 
-public class DemoContext : DbContext
+public class ApplicationDbContext : DbContext
 {
     public  DbSet<CustomerModel> Customers { get; set; }
     public  DbSet<AdressModel> Adresses { get; set; }
@@ -13,7 +11,7 @@ public class DemoContext : DbContext
     public  DbSet<SalesPersonModel> SalesPeople { get; set; }
     public  DbSet<CarModel> Cars { get; set; }
 
-    public DemoContext(DbContextOptions<DemoContext> options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         :base(options)
     {
     }

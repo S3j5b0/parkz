@@ -1,19 +1,18 @@
 ﻿using System.Diagnostics;
 
 using Microsoft.AspNetCore.Mvc;
-using ParkingApp.Models;
-using Parkz.DAL;
 using Parkz.Models;
 
+using X.PagedList;
 namespace Parkz.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly DemoContext _context;
+    private readonly Repository _repository;
     
-    public HomeController(DemoContext ctx)
+    public HomeController(Repository repository)
     {
-        _context = ctx;
+        _repository = repository;
     }
     public IActionResult Index()
     {
@@ -21,13 +20,12 @@ public class HomeController : Controller
         return View();
     }
 
-    [HttpPost]
     
-    public async Task<IActionResult> Query(QueryModel query)
+    public async Task<IActionResult> Query(QueryModel query, int page =1)
     {
-        var customers = await _context.Customers.AsQueryable().FilterCustomerList(query);
 
-
+        IPagedList<CustomerModel> customers = await _repository.FindCustomers(query,page,10);
+    
         return View("Index", customers);
     }
 

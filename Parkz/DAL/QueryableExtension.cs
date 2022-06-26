@@ -16,14 +16,11 @@ public static class QueryableEx
         return condition ? @this.Where(@where) : @this;
     }
 
-    public static async Task<List<CustomerModel>> FilterCustomerList(this IQueryable<CustomerModel> customersQuery, QueryModel query)
+    public static IQueryable<CustomerModel> AddCustomerFilters(this IQueryable<CustomerModel> customersQuery, QueryModel query)
     {
 
 
         customersQuery = customersQuery
-            .Include(x => x.Adress)
-            .Include(x => x.purchases).ThenInclude(x => x.Car)
-            .Include(x => x.purchases).ThenInclude(x => x.SalesPerson.Adress)
             .Where(query.Name != default, x => x.Name.Equals(query.Name))
             .Where(query.Surname != default, x => x.Surname.Equals(query.Surname))
             .Where(query.Age != default, x => x.Age.Equals(query.Age))
@@ -66,43 +63,22 @@ public static class QueryableEx
             .Where(query.salesPersonHouseNr != default, c => c.purchases.Any(x =>
                 x.SalesPerson.Adress.HouseNumber.Equals(query.salesPersonHouseNr)));
         
-        
-        
-
-        
-        switch (query.sortBy)
-        {
-            case SortBy.Age_desc:
-            {
-                customersQuery = customersQuery.OrderByDescending(c => c.Age);
-                break;
-            }
-            case SortBy.CreationDate_desc:
-            {
-                customersQuery = customersQuery.OrderByDescending(c => c.Created);
-                break;
-            }
-            case SortBy.Age_asc:
-            {
-                customersQuery = customersQuery.OrderBy(c => c.Age);
-                break;
-            }
-            case SortBy.CreationDate_asc:
-            {
-                customersQuery = customersQuery.OrderBy(c => c.Created);
-                break;
-            }
-        }
-
-        
-        
-
-        var customers = await customersQuery
-            .ToListAsync();
-        
-
-        return customers;
+        return customersQuery;
     }
+    
+        public static IQueryable<CustomerModel> AddSorting(this IQueryable<CustomerModel> customersQuery, QueryModel query)
+        {
+            return query.sortBy switch
+            {
+                SortBy.Age_asc => customersQuery.OrderBy(x => x.Age),
+                SortBy.Age_desc => customersQuery.OrderByDescending(x => x.Age),
+                SortBy.CreationDate_asc => customersQuery.OrderBy(x => x.Created),
+                SortBy.CreationDate_desc => customersQuery.OrderByDescending(x => x.Created),
+                _ => customersQuery
+            };
+
+
+        }
 
 
 }

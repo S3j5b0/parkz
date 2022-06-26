@@ -3,13 +3,13 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ParkingApp.Models;
+using Parkz;
 
 #nullable disable
 
 namespace Parkz.Migrations
 {
-    [DbContext(typeof(DemoContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     partial class DemoContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -57,7 +57,6 @@ namespace Parkz.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Extras")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Make")

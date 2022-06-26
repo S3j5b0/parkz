@@ -229,7 +229,7 @@ sup {
 }
 
 a {
-  color: #0d6efd;
+  color: #080d15;
   text-decoration: underline;
 }
 a:hover {
@@ -4729,7 +4729,6 @@ textarea.form-control-lg {
 .pagination {
   display: flex;
   padding-right: 0;
-  list-style: none;
 }
 
 .page-link {

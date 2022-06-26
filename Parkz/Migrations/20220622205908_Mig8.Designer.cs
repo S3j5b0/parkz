@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ParkingApp.Models;
+using Parkz.Models;
 
 #nullable disable
 
 namespace Parkz.Migrations
 {
-    [DbContext(typeof(DemoContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220622205908_Mig8")]
     partial class Mig8
     {

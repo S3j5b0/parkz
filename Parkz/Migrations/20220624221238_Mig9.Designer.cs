@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ParkingApp.Models;
+using Parkz;
 
 #nullable disable
 
 namespace Parkz.Migrations
 {
-    [DbContext(typeof(DemoContext))]
-    [Migration("20220616163723_Mdumb")]
-    partial class Mdumb
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20220624221238_Mig9")]
+    partial class Mig9
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,10 @@ namespace Parkz.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("street")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Adresses");
@@ -54,6 +58,9 @@ namespace Parkz.Migrations
                     b.Property<int>("CarColor")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Extras")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Make")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -64,9 +71,6 @@ namespace Parkz.Migrations
 
                     b.Property<float>("RecommendedPrice")
                         .HasColumnType("REAL");
-
-                    b.Property<int>("dong")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -109,10 +113,10 @@ namespace Parkz.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CarId")
+                    b.Property<int>("CarId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerModelId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OrderDate")
@@ -121,12 +125,14 @@ namespace Parkz.Migrations
                     b.Property<float>("PricePaid")
                         .HasColumnType("REAL");
 
-                    b.Property<int?>("SalesPersonId")
+                    b.Property<int>("SalesPersonId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
+
+                    b.HasIndex("CustomerModelId");
 
                     b.HasIndex("SalesPersonId");
 
@@ -174,11 +180,19 @@ namespace Parkz.Migrations
                 {
                     b.HasOne("Parkz.Models.CarModel", "Car")
                         .WithMany()
-                        .HasForeignKey("CarId");
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Parkz.Models.CustomerModel", null)
+                        .WithMany("purchases")
+                        .HasForeignKey("CustomerModelId");
 
                     b.HasOne("Parkz.Models.SalesPersonModel", "SalesPerson")
                         .WithMany()
-                        .HasForeignKey("SalesPersonId");
+                        .HasForeignKey("SalesPersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Car");
 
@@ -194,6 +208,11 @@ namespace Parkz.Migrations
                         .IsRequired();
 
                     b.Navigation("Adress");
+                });
+
+            modelBuilder.Entity("Parkz.Models.CustomerModel", b =>
+                {
+                    b.Navigation("purchases");
                 });
 #pragma warning restore 612, 618
         }

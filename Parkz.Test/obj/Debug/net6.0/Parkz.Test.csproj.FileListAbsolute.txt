@@ -20,7 +20,6 @@
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/EntityFramework.SqlServer.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/EntityFramework.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.Data.SqlClient.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.Data.Sqlite.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -28,15 +27,8 @@
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Proxies.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Sqlite.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.Identity.Client.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.TestPlatform.CoreUtilities.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Microsoft.TestPlatform.CommunicationUtilities.dll
@@ -57,8 +49,6 @@
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/System.Data.SqlClient.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/System.Data.SQLite.EF6.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/System.Drawing.Common.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/System.Runtime.Caching.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/System.Security.Cryptography.ProtectedData.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/System.Security.Permissions.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/System.Windows.Extensions.dll
@@ -127,12 +117,6 @@
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win-arm64/native/sni.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win-x64/native/sni.dll
@@ -160,7 +144,6 @@
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll
-/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll
 /home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/Parkz.dll
@@ -176,3 +159,6 @@
 /home/ask/Git/parkz/Parkz.Test/obj/Debug/net6.0/Parkz.Test.pdb
 /home/ask/Git/parkz/Parkz.Test/obj/Debug/net6.0/Parkz.Test.genruntimeconfig.cache
 /home/ask/Git/parkz/Parkz.Test/obj/Debug/net6.0/ref/Parkz.Test.dll
+/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/JetBrains.Annotations.dll
+/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/X.PagedList.dll
+/home/ask/Git/parkz/Parkz.Test/bin/Debug/net6.0/X.PagedList.Mvc.Core.dll

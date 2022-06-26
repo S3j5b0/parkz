@@ -1,8 +1,11 @@
 ﻿<link rel="stylesheet" href="~/css/searchstyle.css" asp-append-version="true"/>
-
 @using Parkz.Models
-@using Castle.Core.Internal
-@model List<CustomerModel>
+
+@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IPagedList<CustomerModel>
 
 <div class="container mt-5">
 
@@ -11,7 +14,7 @@
         <div class="col-md-10">
 
             <div class="card p-3  py-4">
-                <form asp-controller="Home" asp-action="Query" method="post">
+                <form asp-controller="Home" asp-action="Query" method="get">
                     <h5>Find customer by constraint</h5>
 
                     <div class="row g-3 mt-2">
@@ -21,7 +24,7 @@
 
                             <div class="col-md-4">
 
-                                <input name="Name" type="text" placeholder="First name" value="@ViewBag.Name"class="form-control">
+                                <input name="Name" type="text" placeholder="First name"class="form-control">
             
                             </div>
 
@@ -279,11 +282,12 @@
 
 
 
-    <div class=".justify-content-sm-center p-4" >
-        <p class="text-center"> @Model.Count matching customers for constraints </p>
+    <div class=".justify-content-sm-center p-4">
+        <p class="text-center"> Showing @Model.Count of @Model.TotalItemCount total matching customers for constraints </p>
     </div>
 
-@foreach (CustomerModel c in @Model)
+
+    @foreach (CustomerModel c in @Model)
 {
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
@@ -373,6 +377,54 @@
     </div>
 
 }
+    <div class="pagination my-3 justify-content-sm-center">
+
+   
+@Html.PagedListPager(Model, page => Url.Action("query", new
+{
+    page,
+    Name = Context.Request.Query["Name"],
+    Surname = Context.Request.Query["Surname"],
+    Age = Context.Request.Query["Age"],
+    From = Context.Request.Query["From"],
+    To = Context.Request.Query["To"],
+    sortBy = Context.Request.Query["sortBy"],
+    ZipCode = Context.Request.Query["ZipCode"],
+    Country = Context.Request.Query["Country"],
+    Street = Context.Request.Query["Street"],
+    Town = Context.Request.Query["Town"],
+    HouseNr = Context.Request.Query["HouseNr"],
+    model = Context.Request.Query["model"],
+    make = Context.Request.Query["ZipCode"],
+    color = Context.Request.Query["color"],
+    recPrice = Context.Request.Query["recPrice"],
+    paidPrice = Context.Request.Query["paidPrice"],
+    recPriceLow = Context.Request.Query["recPriceLow"],
+    recPriceTop = Context.Request.Query["recPriceTop"],
+    paidPriceLow = Context.Request.Query["paidPriceLow"],
+    paidPriceTop = Context.Request.Query["paidPriceTop"],
+    purchaseDateFrom = Context.Request.Query["purchaseDateFrom"],
+    purchaseDateTo = Context.Request.Query["purchaseDateTo"],
+    salespersonName = Context.Request.Query["salespersonName"],
+    salespersonJobTitle = Context.Request.Query["salespersonJobTitle"],
+    salesPersonSalary = Context.Request.Query["salesPersonSalary"],
+    salesPersonSalaryFrom = Context.Request.Query["salesPersonSalaryFrom"],
+    salesPersonSalaryTo = Context.Request.Query["salesPersonSalaryTo"],
+    SalesPersonCountry = Context.Request.Query["SalesPersonCountry"],
+    SalesPersonTown = Context.Request.Query["SalesPersonTown"],
+    SalesPersonZipCode = Context.Request.Query["SalesPersonZipCode"],
+    SalesPersonStreet = Context.Request.Query["SalesPersonStreet"],
+    salesPersonHouseNr = Context.Request.Query["salesPersonHouseNr"],
+
+}),
+    new PagedListRenderOptions {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    }))
 
 
+
+
+</div>
 }
+

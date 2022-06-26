@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ParkingApp.Models;
+using Parkz.Models;
 using Parkz.DAL;
 using Parkz.Models;
 
@@ -7,13 +7,15 @@ namespace Parkz.Test;
 
 public class Tests
 {
-    private DemoContext _context;
+    private ApplicationDbContext _context;
     
     [SetUp]
     public void Setup()
     {
-        var dbContextOptions = new DbContextOptionsBuilder<DemoContext>().UseInMemoryDatabase("Test");
-        _context = new DemoContext(dbContextOptions.Options);
+        var dbContextOptions = new DbContextOptionsBuilder<ApplicationDbContext>().UseInMemoryDatabase("Test");
+        
+        
+        _context = new ApplicationDbContext(dbContextOptions.Options);
         _context.Database.EnsureCreated();
 
         SalesPersonModel s = new SalesPersonModel()
@@ -112,7 +114,8 @@ public class Tests
     [Test]
     public async Task Test1()
     {
-        var customers=  await _context.Customers.FilterCustomerList(new QueryModel() {Name = "jon"});
+        var Repo = new Repository(_context);
+        var customers=  await Repo.FindCustomers(new QueryModel() {Name = "jon"},1,20);
 
         foreach (var customer in customers)
         {
@@ -127,7 +130,8 @@ public class Tests
     [Test]
     public async Task Test2()
     {
-        var customers=  await _context.Customers.FilterCustomerList(new QueryModel() {Street = "Smallegade"});
+        var Repo = new Repository(_context);
+        var customers=  await Repo.FindCustomers(new QueryModel() {Street = "Smallegade"},1,20);
 
         foreach (var customer in customers)
         {
@@ -142,7 +146,8 @@ public class Tests
     [Test]
     public async Task Test3()
     {
-        var customers=  await _context.Customers.FilterCustomerList(new QueryModel() {make = "v100"});
+        var Repo = new Repository(_context);
+        var customers=  await Repo.FindCustomers(new QueryModel() {make = "v100"},1,20);
 
         foreach (var customer in customers)
         {
@@ -156,7 +161,8 @@ public class Tests
     [Test]
     public async Task Test4()
     {
-        var customers=  await _context.Customers.FilterCustomerList(new QueryModel() {model = "camaro"});
+        var Repo = new Repository(_context);
+        var customers=  await Repo.FindCustomers(new QueryModel() {model = "camaro"},1,20);
 
         foreach (var customer in customers)
         {
@@ -170,7 +176,8 @@ public class Tests
     [Test]
     public async Task Test5()
     {
-        var customers=  await _context.Customers.FilterCustomerList(new QueryModel() {salespersonName = "Bob salesGuy"});
+        var Repo = new Repository(_context);
+        var customers=  await Repo.FindCustomers(new QueryModel() {salespersonName = "Bob salesGuy"},1,20);
 
         foreach (var customer in customers)
         {

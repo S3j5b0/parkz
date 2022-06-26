@@ -82,7 +82,13 @@ public class QueryModel
     
     public int salesPersonHouseNr { get; set; }
     
+    
    
+}
+
+public class Inner
+{
+    public string innething { get; set; }
 }
 
 public enum SortBy
